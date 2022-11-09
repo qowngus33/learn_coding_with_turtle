@@ -1,41 +1,36 @@
-import turtle
 import tkinter as tk
+import time
+from myTurtle import MyTurtle
 
 class LearningCodingWithTurtleGUI:
-    def __init__(self, turtle, master, instruct_list):
-        self.width = 400
-        self.height = 300
+    def __init__(self, master, instruct_list):
+        self.width, self.height = (400, 300)
         self.command_num = 0
         self.max_command_num = 10
-        self.master = master
         self.instruct_list = instruct_list
+        self.master = master
         self.master.title("Learning Coding With Turtle")
         self.master.geometry("600x400")
         self.master.resizable(False, False)
-        self.canvas = tk.Canvas(master)
-        self.canvas.grid(column=1, row=0)
-        self.canvas.config(width=self.width, height=self.height)
-        self.screen = turtle.TurtleScreen(self.canvas)
-        self.screen.bgcolor("cyan")
-        self.turtle = turtle.RawTurtle(self.screen, shape="turtle")
+        self.turtle = MyTurtle(master=self.master,width=self.width,height=self.height)
 
-        self.leftFrame = tk.Frame(master, width=200, height=300,padx=10, pady=10, bd=2, relief="solid")
+        self.leftFrame = tk.Frame(self.master, width=200, height=300,padx=10, pady=10, bd=2, relief="solid")
         self.leftFrame.grid(column=0,row=0)
         self.leftFrame.propagate(0)
 
         self.commandText = tk.Text(self.leftFrame, width=190,height=290)
         self.commandText.pack()
 
-        self.bottomFrame = tk.LabelFrame(master, width=600, height=100, padx=10, pady=10)
+        self.bottomFrame = tk.LabelFrame(self.master, width=600, height=100, padx=10, pady=10)
         self.bottomFrame.grid(column=0,row=1,columnspan=10)
         self.bottomFrame.propagate(0)
 
         self.btn = []
-        for idx, instruct in enumerate(instruct_list):
+        for idx, instruct in enumerate(set(instruct_list)):
             self.btn.append(tk.Button(self.bottomFrame,
                                       text=instruct,
                                       command=lambda c=idx:self.command_click("\n"+instruct_list[c])))
-            self.btn[idx].place(x=150*(idx % 3), y=60*(idx//3))
+            self.btn[idx].place(x=150*(idx % 2), y=40*(idx//2))
         self.runBtn = tk.Button(self.bottomFrame,
                                 text=">>",
                                 command=self.run_click)
@@ -71,8 +66,15 @@ class LearningCodingWithTurtleGUI:
     def reset_click(self):
         self.turtle.reset()
 
+    def show_goal(self):
+        for instruct in self.instruct_list:
+            exec("self."+instruct)
+        time.sleep(3)
+        self.turtle.reset()
+
 if __name__ == '__main__':
-    instructList = ["turtle.forward(100)","turtle.left(90)"]
+    instructList = ["turtle.forward(50)","turtle.left(90)","turtle.forward(50)","turtle.right(90)"]
     root = tk.Tk()
-    app = LearningCodingWithTurtleGUI(turtle, root, instructList)
+    app = LearningCodingWithTurtleGUI(root, instructList)
+    app.show_goal()
     tk.mainloop()
