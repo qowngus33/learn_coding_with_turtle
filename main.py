@@ -8,7 +8,7 @@ from imageFrame import ImageFrame
 class LearnCodingWithTurtle:
     def __init__(self, root):
         self.root = root
-        self.root.title("Learning Coding With Turtle")
+        self.root.title("LCWT")
         self.root.geometry("600x400")
         self.root.resizable(False, False)
 
