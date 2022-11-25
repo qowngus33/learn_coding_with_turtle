@@ -1,10 +1,25 @@
-# learn_coding_with_turtle
+# LCWT (Learn Coding With Turtle)
 
-#### Title (작품명)
- * LCWT
-#### Team (팀 구성)
- * 배주현
-#### Description (설명)
- * 코딩을 처음 접하는 어린이들이 알고리즘의 원리를 쉽게 이해할 수 있도록 스테이지 게임형식으로 구현한 코딩 게임입니다.
- * 손쉽게 게임 스테이지를 고치고, 정의할 수 있습니다.
+![GitHub](https://img.shields.io/github/license//kochat)
 
+## Description
+ * Coding game made in the form of a stage game so that children who are new to coding can easily understand the principles of the algorithm.
+ * You can easily edit or make stages of game.
+
+
+
+## License
+```
+Copyright 2022 JuHyun Bae.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
