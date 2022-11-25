@@ -1,6 +1,7 @@
 import tkinter as tk
+import time
+
 from game import GamePage
-from gameTable import GameTableFrame
 from stage import Stage
 from imageFrame import ImageFrame
 
@@ -18,6 +19,7 @@ class LearnCodingWithTurtle:
 
         for i in range(len(self.gameFrame)):
             self.gameFrame[i].grid(row=0,column=0,sticky="nsew")
+            self.game[i].homeBtn.configure(text = "Home", command=lambda:[self.gameTableFrame.tkraise()])
 
         self.gameTableFrame.grid(row=0, column=0, sticky="nsew")
         self.startFrame.grid(row=0, column=0, sticky="nsew")
@@ -26,26 +28,27 @@ class LearnCodingWithTurtle:
                                     width=15,
                                     padx=10,
                                     pady=10,
-                                    text="game start",
+                                    text="Game Start",
+                                    font=("Arial", 20),
                                     command=lambda:[self.gameTableFrame.tkraise()])
-        self.btnToTable.place(x=210,y=300)
+        self.btnToTable.place(x=190,y=300)
+
         self.btnToGame = []
         for i in range(len(instructList)):
             self.btnToGame.append(tk.Button(self.gameTableFrame,
                                             text=str(i+1),
-                                            command=lambda c=i:self.startGame(self.gameFrame[c],self.game[c])))
+                                            bg='white',
+                                            font=("Arial", 15),
+                                            command=lambda c=i:self.start_game(self.gameFrame[c],self.game[c])))
             self.btnToGame[i].place(x=95*(i+1), y=130*((i%2==1)+1))
         self.startFrame.tkraise()
 
-    def startGame(self, frame, game):
+    def start_game(self, frame, game):
+        game.reset()
         frame.tkraise()
         game.show_goal()
-        game.start()
 
 if __name__ == '__main__':
-    stage = Stage()
-    instructList, goal = stage.stages()
-    print(goal)
-    root = tk.Tk()
-    app = LearnCodingWithTurtle(root)
+    instructList, goal = Stage("stage/").stages()
+    app = LearnCodingWithTurtle(tk.Tk())
     tk.mainloop()
