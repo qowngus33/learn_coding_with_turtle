@@ -83,6 +83,9 @@ class GamePage:
         if (int(self.turtle.pos()[0]),int(self.turtle.pos()[1])) == self.goal:
             if not self.isShowingGoal:
                 self.commandText.delete("1.0", "end")
-                self.commandText.insert(tk.END,"SUCCESS!!")
+                if self.command_num <= len(self.instruct_list):
+                    self.commandText.insert(tk.END,f"SUCCESS!!\n\nYou Did It With Average Command Number Or Better!!")
+                else:
+                    self.commandText.insert(tk.END, f"SUCCESS!!\n\nBut You Can Try Again With Shorter Length Of Commands.")
         else:
             self.master.after(1000, self.step)
