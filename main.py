@@ -1,95 +1,51 @@
 import tkinter as tk
-import time
-from myTurtle import MyTurtle
+from game import GamePage
+from gameTable import GameTableFrame
+from stage import Stage
+from startPage import StartFrame
 
-class LearningCodingWithTurtleGUI:
-    def __init__(self, master, instruct_list, goal):
-        self.width, self.height = (400, 300)
-        self.command_num = 0
-        self.max_command_num = 10
-        self.instruct_list = instruct_list
-        self.master = master
-        self.master.title("Learning Coding With Turtle")
-        self.master.geometry("600x400")
-        self.master.resizable(False, False)
-        self.turtle = MyTurtle(master=self.master,width=self.width,height=self.height)
-        self.turtle.setGoal(goal)
+class LearnCodingWithTurtle:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Learning Coding With Turtle")
+        self.root.geometry("600x400")
+        self.root.resizable(False, False)
 
-        self.leftFrame = tk.Frame(self.master, width=200, height=300,padx=10, pady=10, bd=2, relief="solid")
-        self.leftFrame.grid(column=0,row=0)
-        self.leftFrame.propagate(0)
+        self.gameFrame = [tk.Frame(self.root) for _ in range(len(instructList))]
+        self.game = [GamePage(self.gameFrame[i],instructList[i],goal[i]) for i in range(len(instructList))]
+        self.startFrame = StartFrame(self.root)
+        self.gameTableFrame = GameTableFrame(self.root)
 
-        self.commandText = tk.Text(self.leftFrame, width=190,height=290)
-        self.commandText.pack()
+        for i in range(len(self.gameFrame)):
+            self.gameFrame[i].grid(row=0,column=0,sticky="nsew")
 
-        self.bottomFrame = tk.LabelFrame(self.master, width=600, height=100, padx=10, pady=10)
-        self.bottomFrame.grid(column=0,row=1,columnspan=10)
-        self.bottomFrame.propagate(0)
+        self.gameTableFrame.grid(row=0, column=0, sticky="nsew")
+        self.startFrame.grid(row=0, column=0, sticky="nsew")
 
-        self.btn = []
-        for idx, instruct in enumerate(list(set(instruct_list))):
-            self.btn.append(tk.Button(self.bottomFrame,
-                                      text=instruct,
-                                      command=lambda c=idx:self.command_click("\n"+instruct_list[c])))
-            self.btn[idx].place(x=150*(idx % 2), y=40*(idx//2))
-        self.runBtn = tk.Button(self.bottomFrame,
-                                text="Run",
-                                command=self.run_click)
-        self.runBtn.place(x=self.width, y=0)
-        self.deleteBtn = tk.Button(self.bottomFrame,
-                                   text="Delete",
-                                   command=self.delete_click)
-        self.deleteBtn.place(x=self.width, y=30)
-        self.resetBtn = tk.Button(self.bottomFrame,
-                                  text="Reset",
-                                  command=self.reset_click)
-        self.resetBtn.place(x=self.width + 50, y=0)
+        self.btnToTable = tk.Button(self.startFrame,
+                                    width=15,
+                                    padx=10,
+                                    pady=10,
+                                    text="game start",
+                                    command=lambda:[self.gameTableFrame.tkraise()])
+        self.btnToTable.place(x=210,y=300)
+        self.btnToGame = []
+        for i in range(len(instructList)):
+            self.btnToGame.append(tk.Button(self.gameTableFrame,
+                                            text=str(i+1),
+                                            command=lambda c=i:self.startGame(self.gameFrame[c],self.game[c])))
+            self.btnToGame[i].place(x=95*(i+1), y=130*((i%2==1)+1))
+        self.startFrame.tkraise()
 
-    def command_click(self, instruct):
-        if self.command_num < self.max_command_num:
-            self.commandText.insert(tk.END,instruct)
-            self.command_num += 1
-
-    def run_click(self):
-        result = self.commandText.get("1.0","end-1c")
-        command_list = result.split("\n")
-        for command in command_list:
-            if len(command) > 0:
-                exec("self."+command)
-
-    def delete_click(self):
-        result = self.commandText.get("1.0","end-1c")
-        result = result[:max(0,result.rfind("\n"))]
-        self.commandText.delete("1.0",tk.END)
-        self.commandText.insert(tk.CURRENT,result)
-        self.command_num = max(0,self.command_num-1)
-
-    def reset_click(self):
-        self.turtle.reset()
-
-    def show_goal(self):
-        for instruct in self.instruct_list:
-            exec("self."+instruct)
-        time.sleep(1)
-        self.turtle.reset()
-
-    def start(self):
-        self.master.after(200, self.step)
-
-    def step(self):
-        print(self.turtle.pos())
-        if self.turtle.pos() == goal:
-            self.commandText.delete("1.0", "end")
-            self.commandText.insert(tk.END,"SUCCESS!!")
-        else:
-            self.master.after(1000, self.step)
-
+    def startGame(self, frame, game):
+        frame.tkraise()
+        game.show_goal()
+        game.start()
 
 if __name__ == '__main__':
-    instructList = ["turtle.forward(50)","turtle.left(90)","turtle.forward(50)"]
-    goal = (50,50)
+    stage = Stage()
+    instructList, goal = stage.stages()
+    print(goal)
     root = tk.Tk()
-    app = LearningCodingWithTurtleGUI(root, instructList, goal)
-    app.show_goal()
-    app.start()
+    app = LearnCodingWithTurtle(root)
     tk.mainloop()
