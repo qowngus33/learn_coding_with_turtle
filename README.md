@@ -1,6 +1,6 @@
 # LCWT (Learn Coding With Turtle)
 
-![GitHub](https://img.shields.io/github/license//kochat)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
  * Coding game made in the form of a stage game so that children who are new to coding can easily understand the principles of the algorithm.
