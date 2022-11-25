@@ -3,7 +3,7 @@ import time
 from myTurtle import MyTurtle
 
 class LearningCodingWithTurtleGUI:
-    def __init__(self, master, instruct_list):
+    def __init__(self, master, instruct_list, goal):
         self.width, self.height = (400, 300)
         self.command_num = 0
         self.max_command_num = 10
@@ -13,6 +13,7 @@ class LearningCodingWithTurtleGUI:
         self.master.geometry("600x400")
         self.master.resizable(False, False)
         self.turtle = MyTurtle(master=self.master,width=self.width,height=self.height)
+        self.turtle.setGoal(goal)
 
         self.leftFrame = tk.Frame(self.master, width=200, height=300,padx=10, pady=10, bd=2, relief="solid")
         self.leftFrame.grid(column=0,row=0)
@@ -26,21 +27,21 @@ class LearningCodingWithTurtleGUI:
         self.bottomFrame.propagate(0)
 
         self.btn = []
-        for idx, instruct in enumerate(set(instruct_list)):
+        for idx, instruct in enumerate(list(set(instruct_list))):
             self.btn.append(tk.Button(self.bottomFrame,
                                       text=instruct,
                                       command=lambda c=idx:self.command_click("\n"+instruct_list[c])))
             self.btn[idx].place(x=150*(idx % 2), y=40*(idx//2))
         self.runBtn = tk.Button(self.bottomFrame,
-                                text=">>",
+                                text="Run",
                                 command=self.run_click)
         self.runBtn.place(x=self.width, y=0)
         self.deleteBtn = tk.Button(self.bottomFrame,
-                                   text="Del",
+                                   text="Delete",
                                    command=self.delete_click)
         self.deleteBtn.place(x=self.width, y=30)
         self.resetBtn = tk.Button(self.bottomFrame,
-                                  text="RE",
+                                  text="Reset",
                                   command=self.reset_click)
         self.resetBtn.place(x=self.width + 50, y=0)
 
@@ -69,12 +70,26 @@ class LearningCodingWithTurtleGUI:
     def show_goal(self):
         for instruct in self.instruct_list:
             exec("self."+instruct)
-        time.sleep(3)
+        time.sleep(1)
         self.turtle.reset()
 
+    def start(self):
+        self.master.after(200, self.step)
+
+    def step(self):
+        print(self.turtle.pos())
+        if self.turtle.pos() == goal:
+            self.commandText.delete("1.0", "end")
+            self.commandText.insert(tk.END,"SUCCESS!!")
+        else:
+            self.master.after(1000, self.step)
+
+
 if __name__ == '__main__':
-    instructList = ["turtle.forward(50)","turtle.left(90)","turtle.forward(50)","turtle.right(90)"]
+    instructList = ["turtle.forward(50)","turtle.left(90)","turtle.forward(50)"]
+    goal = (50,50)
     root = tk.Tk()
-    app = LearningCodingWithTurtleGUI(root, instructList)
+    app = LearningCodingWithTurtleGUI(root, instructList, goal)
     app.show_goal()
+    app.start()
     tk.mainloop()
