@@ -2,7 +2,7 @@ import tkinter as tk
 from game import GamePage
 from gameTable import GameTableFrame
 from stage import Stage
-from startPage import StartFrame
+from imageFrame import ImageFrame
 
 class LearnCodingWithTurtle:
     def __init__(self, root):
@@ -13,8 +13,8 @@ class LearnCodingWithTurtle:
 
         self.gameFrame = [tk.Frame(self.root) for _ in range(len(instructList))]
         self.game = [GamePage(self.gameFrame[i],instructList[i],goal[i]) for i in range(len(instructList))]
-        self.startFrame = StartFrame(self.root)
-        self.gameTableFrame = GameTableFrame(self.root)
+        self.startFrame = ImageFrame(self.root,"image/startPage.png")
+        self.gameTableFrame = ImageFrame(self.root,"image/gameTable.png")
 
         for i in range(len(self.gameFrame)):
             self.gameFrame[i].grid(row=0,column=0,sticky="nsew")
