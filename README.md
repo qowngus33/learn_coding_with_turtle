@@ -2,7 +2,9 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![startPage](https://user-images.githubusercontent.com/83813866/204014420-baa80421-3404-4f52-a0e7-275ce157f5c6.png)
+![git](https://user-images.githubusercontent.com/83813866/204014817-952b68d1-ed88-414f-9445-a50fafd283b7.png)
+
+
  * Coding game made in the form of a stage game so that children who are new to coding can easily understand the principles of the algorithm.
  * You can easily edit or make stages of game.
 
