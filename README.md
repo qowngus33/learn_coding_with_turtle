@@ -10,6 +10,43 @@
 
 <br>
 
+## Why LCWT
+
+* It has **simple** and **intuitive** GUI so that very **young** students can also learn coding
+<img width="712" alt="스크린샷 2022-11-26 오후 3 30 39" src="https://user-images.githubusercontent.com/83813866/204075573-8d068b5a-a2b1-4da4-8c6b-722f512e6247.png">
+
+
+* You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
+```python
+stage = Stage("stage/")
+stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
+```
+
+* **LCWT** is very **light** and uses **standard** librarys of python such as `tkinter` `time` `turtle` so there is no need to install additional librarys except for `pillow`
+
+<br>
+
+## How to use
+
+* First you have clone LCWT codes
+```git
+git clone
+```
+
+* You can run LCWT game by following commands
+```python
+path = "path for getting stage information pickle files you created"
+instructList, goal = Stage(path).stages()
+app = LearnCodingWithTurtle(tk.Tk())
+tk.mainloop()
+```
+* You can make and save stages by following commands
+```python
+path = "path for saving stage information pickle files you created"
+stage = Stage(path)
+stage.save_stage(stage_idx,["turtle.forward(50)","turtle.forward(50)"],(100,0))
+```
+<br>
 
 ## License
 ```
