@@ -54,7 +54,7 @@ stage = Stage(path)
 instructList = ["turtle.forward(50)","turtle.forward(50)"]
 goal = (100,0)
 
-stage.save_stage(stage_idx,["turtle.forward(50)","turtle.forward(50)"],(100,0))
+stage.save_stage(stage_idx,instructionList,goal)
 ```
 
 * ... Or you can simply use games already made by running `main.py`
