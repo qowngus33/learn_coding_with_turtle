@@ -57,7 +57,7 @@ goal = (100,0)
 stage.save_stage(stage_idx,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 ```
 
-* ... Or you can simply use games made already by `if __name__ == '__main__':` in `main.py`
+* ... Or you can simply use games already made by running `main.py`
 <br>
 
 ## TODO
