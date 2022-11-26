@@ -30,7 +30,7 @@ stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 
 * First you have clone LCWT codes
 ```git
-git clone
+git clone https://github.com/qowngus33/learn_coding_with_turtle
 ```
 
 * You can run LCWT game by following commands
