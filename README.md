@@ -60,6 +60,14 @@ stage.save_stage(stage_idx,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 * ... Or you can simply use games made already by `if __name__ == '__main__':` in `main.py`
 <br>
 
+## TODO
+* Add tutorials for learning button uses
+* Add buttons for going forwards and backwards at game stage selecting page
+* Add obstacle adding process in Stage class
+* Add GUI for making games and auto saving of goals
+
+<br>
+
 ## License
 ```
 Copyright 2022 JuHyun Bae.
