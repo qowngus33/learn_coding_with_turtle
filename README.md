@@ -5,8 +5,8 @@
 ![git](https://user-images.githubusercontent.com/83813866/204014817-952b68d1-ed88-414f-9445-a50fafd283b7.png)
 
 
- * Coding game made in the form of a stage game so that children who are new to coding can easily understand the principles of algorithms.
- * You can easily edit or make stages of game.
+ * **Coding game** made in the form of a **stage game** so that children who are new to coding can easily understand the principles of **algorithms**
+ * You can easily edit or make stages of game
 
 <br>
 
@@ -37,15 +37,22 @@ git clone https://github.com/qowngus33/learn_coding_with_turtle
 ```python
 path = "path for getting stage information pickle files you created"
 instructList, goal = Stage(path).stages()
-app = LearnCodingWithTurtle(tk.Tk())
+
+app = LearnCodingWithTurtle(tk.Tk(),instructList, goal)
 tk.mainloop()
 ```
 * You can make and save stages by following commands
 ```python
 path = "path for saving stage information pickle files you created"
 stage = Stage(path)
+
+instructList = ["turtle.forward(50)","turtle.forward(50)"]
+goal = (100,0)
+
 stage.save_stage(stage_idx,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 ```
+
+* ... Or you can simply use games made already by `if __name__ == '__main__':` in `main.py`
 <br>
 
 ## License
