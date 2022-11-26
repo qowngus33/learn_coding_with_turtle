@@ -5,7 +5,7 @@
 ![git](https://user-images.githubusercontent.com/83813866/204014817-952b68d1-ed88-414f-9445-a50fafd283b7.png)
 
 
- * **Coding game** made in the form of a **stage game** so that children who are new to coding can easily understand the principles of **algorithms**
+ * **Coding game** made in the form of a **stage game** so that **children** who are new to coding can easily understand the principles of **algorithms**
  * You can easily edit or make stages of game
 
 <br>
