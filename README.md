@@ -33,6 +33,11 @@ stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 git clone https://github.com/qowngus33/learn_coding_with_turtle
 ```
 
+* Install pillow
+```
+pip install pillow==9.3.0
+```
+
 * You can run LCWT game by following commands
 ```python
 path = "path for getting stage information pickle files you created"
