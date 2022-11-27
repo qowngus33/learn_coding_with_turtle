@@ -28,7 +28,7 @@ stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 
 ## How to use
 
-* First you have clone LCWT codes
+* First clone LCWT codes
 ```git
 git clone https://github.com/qowngus33/learn_coding_with_turtle
 ```
@@ -65,7 +65,6 @@ python main.py
 <br>
 
 ## TODO
-* Add buttons for going forwards and backwards at game stage selecting page
 * Add obstacle adding process in Stage class
 * Add GUI for making games and auto saving of goals
 * Add program logics such as for loop
