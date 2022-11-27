@@ -20,11 +20,15 @@ class Stage:
         return self.instructList, self.goal
 
     def save_stage(self, idx, instruction_list, goal):
-        stageObject = {'instruction_list': instruction_list, 'goal': goal}
-
-        self.file_list.append(f'{idx:02d}.pickle')
-        with open(self.path+f"{idx:02d}.pickle", "wb") as fw:
-            pickle.dump(stageObject, fw)
+        if len(instruction_list) == 0:
+            print("instruction_list must contain at least one command. ")
+        elif len(goal) != 2:
+            print("stage goal length must to two. (x,y)")
+        else:
+            stageObject = {'instruction_list': instruction_list, 'goal': goal}
+            self.file_list.append(f'{idx:02d}.pickle')
+            with open(self.path + f"{idx:02d}.pickle", "wb") as fw:
+                pickle.dump(stageObject, fw)
 
 if __name__ == "__main__":
     stage = Stage("stage/")
