@@ -65,7 +65,6 @@ python main.py
 <br>
 
 ## TODO
-* Add buttons for going forwards and backwards at game stage selecting page
 * Add obstacle adding process in Stage class
 * Add GUI for making games and auto saving of goals
 * Add program logics such as for loop
