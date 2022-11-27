@@ -9,13 +9,13 @@ class MyTurtle(turtle.RawTurtle):
         self.screen = turtle.TurtleScreen(self.canvas)
         self.screen.bgpic("image/turtle_background.png")
 
-        self.screen.register_shape("image/puddle-md.gif")
+        self.screen.register_shape("image/puddle.gif")
         super(MyTurtle, self).__init__(self.screen)
 
         # self.getscreen().bgcolor("green")
         self.river = turtle.RawTurtle(self.screen)
         self.river.penup()
-        self.river.shape("image/puddle-md.gif")
+        self.river.shape("image/puddle.gif")
 
         self.shape("turtle")
         self.shapesize(1.3, 1.3)
