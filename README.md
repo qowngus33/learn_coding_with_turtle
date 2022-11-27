@@ -28,7 +28,7 @@ stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
 
 ## How to use
 
-* First you have clone LCWT codes
+* First clone LCWT codes
 ```git
 git clone https://github.com/qowngus33/learn_coding_with_turtle
 ```
