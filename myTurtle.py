@@ -7,6 +7,7 @@ class MyTurtle(turtle.RawTurtle):
         self.canvas.grid(column=1, row=0)
         self.canvas.config(width=width, height=height)
         self.screen = turtle.TurtleScreen(self.canvas)
+        self.screen.bgpic("image/noname1.png")
 
         self.screen.register_shape("image/puddle-md.gif")
         super(MyTurtle, self).__init__(self.screen)

@@ -15,14 +15,14 @@ class GamePage:
         self.turtle = MyTurtle(master=self.master,width=self.width,height=self.height)
         self.turtle.setGoal(goal)
 
-        self.leftFrame = tk.Frame(self.master,width=200,height=300,padx=10,pady=10,bd=2,relief="solid")
+        self.leftFrame = tk.Frame(self.master,width=200,height=300,padx=10,pady=10,bd=2)
         self.leftFrame.grid(column=0,row=0)
         self.leftFrame.propagate(0)
         self.commandText = tk.Text(self.leftFrame,width=190,height=290,font=("Arial", 18))
         self.commandText.config(state="disabled")
         self.commandText.pack()
 
-        self.bottomFrame = tk.LabelFrame(self.master,width=600,height=100,padx=10,pady=10)
+        self.bottomFrame = tk.LabelFrame(self.master,width=600,height=100,padx=10,pady=10,bg="white")
         self.bottomFrame.grid(column=0,row=1,columnspan=10)
         self.bottomFrame.propagate(0)
 
@@ -33,10 +33,11 @@ class GamePage:
                                       text=instruct,
                                       width=15,
                                       font=("Arial", 15),
+                                      bg="white",
                                       command=lambda c=idx:self.command_click("\n"+btn_instruct[c])))
             self.btn[idx].place(x=180*(idx % 2), y=40*(idx//2))
 
-        self.runBtn = tk.Button(self.bottomFrame,width=5,text="Run",command=self.run_click,font=("Arial", 15))
+        self.runBtn = tk.Button(self.bottomFrame,width=5,text="Run",command=self.run_click,font=("Arial", 15),bg="white")
         self.deleteBtn = tk.Button(self.bottomFrame,width=5,text="Delete",command=self.delete_click,font=("Arial", 15))
         self.homeBtn = tk.Button(self.bottomFrame,width=5,text="Home",font=("Arial", 15))
         self.showGoalBtn = tk.Button(self.bottomFrame,width=5,text="Goal",command=self.show_goal,font=("Arial", 15))
