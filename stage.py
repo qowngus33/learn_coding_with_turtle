@@ -28,8 +28,8 @@ class Stage:
 if __name__ == "__main__":
     stage = Stage("stage/")
     stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
-    stage.save_stage(2,["turtle.left(90)", "turtle.left(90)", "turtle.left(90)", "turtle.forward(50)"], (0,-50))
-    stage.save_stage(3,["turtle.right(90)", "turtle.forward(50)", "turtle.forward(50)"], (0,-100))
+    stage.save_stage(3,["turtle.left(90)", "turtle.left(90)", "turtle.left(90)", "turtle.forward(100)"], (0,-100))
+    stage.save_stage(2,["turtle.right(90)", "turtle.forward(50)", "turtle.forward(50)"], (0,-100))
     stage.save_stage(4,["turtle.forward(50)", "turtle.left(90)", "turtle.forward(50)",
                         "turtle.right(90)","turtle.forward(50)", "turtle.left(90)", "turtle.forward(50)"], (100, 100))
     stage.save_stage(5,["turtle.forward(50)","turtle.left(90)",
