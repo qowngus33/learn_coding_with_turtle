@@ -1,7 +1,7 @@
 import turtle
 import tkinter as tk
 
-class MyTurtle(turtle.RawTurtle):
+class Player(turtle.RawTurtle):
     def __init__(self, master, width, height):
         self.canvas = tk.Canvas(master)
         self.canvas.grid(column=1, row=0)
@@ -10,9 +10,8 @@ class MyTurtle(turtle.RawTurtle):
         self.screen.bgpic("image/turtle_background.png")
 
         self.screen.register_shape("image/puddle.gif")
-        super(MyTurtle, self).__init__(self.screen)
+        super(Player, self).__init__(self.screen)
 
-        # self.getscreen().bgcolor("green")
         self.river = turtle.RawTurtle(self.screen)
         self.river.penup()
         self.river.shape("image/puddle.gif")
@@ -25,6 +24,6 @@ class MyTurtle(turtle.RawTurtle):
         self.river.setpos(goal)
 
     def reset(self):
-        super(MyTurtle, self).reset()
+        super(Player, self).reset()
         self.shapesize(1.3, 1.3)
         self.speed(1)

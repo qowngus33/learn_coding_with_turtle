@@ -51,5 +51,3 @@ if __name__ == "__main__":
                          "turtle.left(45)","turtle.forward(50)",
                          "turtle.left(45)","turtle.forward(50)",
                          "turtle.left(45)","turtle.forward(50)"], (-49, 120))
-
-

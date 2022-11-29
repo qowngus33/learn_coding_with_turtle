@@ -33,12 +33,9 @@ class LearnCodingWithTurtle:
         self.homeBtn = tk.Button(self.tutorialFrame,text="Go Back",command=lambda:[self.gameTableFrame.tkraise()])
         self.homeBtn.place(x=500,y=10)
 
-        self.btnToTable = tk.Button(self.startFrame,
-                                    width=15,
-                                    padx=10,
-                                    pady=10,
-                                    text="Game Start",
-                                    font=("Arial", 20),
+        self.btnToTable = tk.Button(self.startFrame,width=15,
+                                    padx=10,pady=10,
+                                    text="Game Start",font=("Arial", 20),
                                     command=lambda:[self.gameTableFrame.tkraise()])
         self.btnToTable.place(x=190,y=300)
 
@@ -56,7 +53,7 @@ class LearnCodingWithTurtle:
                                             width=2,
                                             font=("Arial", 15),
                                             command=lambda c=i:self.start_game(self.gameFrame[c],self.game[c])))
-            self.btnToGame[i].place(x=95 * ((i%5) + 1), y=130 * (((i%5) % 2 == 1) + 1))
+            self.btnToGame[i].place(x=95*(i%5)+90, y=130 * (((i%5) % 2 == 1) + 1))
         for i in range(min(len(self.instructList),5)):
             self.btnToGame[i].tkraise()
 

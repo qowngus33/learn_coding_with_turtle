@@ -1,6 +1,6 @@
 import tkinter as tk
 import time
-from myTurtle import MyTurtle
+from player import Player
 
 class GamePage:
     def __init__(self, master, instruct_list, goal):
@@ -8,11 +8,9 @@ class GamePage:
         self.command_num = 0
         self.max_command_num = 10
         self.goal = goal
-        self.isShowingGoal = False
         self.instruct_list = instruct_list
         self.master = master
-
-        self.turtle = MyTurtle(master=self.master,width=self.width,height=self.height)
+        self.turtle = Player(master=self.master,width=self.width,height=self.height)
         self.turtle.setGoal(goal)
 
         self.leftFrame = tk.Frame(self.master,width=200,height=300,padx=10,pady=10,bd=2)
@@ -33,7 +31,6 @@ class GamePage:
                                       text=instruct,
                                       width=15,
                                       font=("Arial", 15),
-                                      bg="white",
                                       command=lambda c=idx:self.command_click("\n"+btn_instruct[c])))
             self.btn[idx].place(x=180*(idx % 2), y=40*(idx//2))
 
@@ -82,12 +79,11 @@ class GamePage:
         self.commandText.config(state="disabled")
 
     def show_goal(self):
-        self.isShowingGoal = True
+        self.turtle.reset()
         for instruct in self.instruct_list:
             exec("self."+instruct)
         time.sleep(1)
         self.turtle.reset()
-        self.isShowingGoal = False
 
     def game_over(self):
         self.commandText.configure(state='normal')
@@ -99,8 +95,20 @@ class GamePage:
         self.commandText.config(state="disabled")
         self.command_num = 0
 
+        # disable buttons
+        self.deleteBtn.config(state="disabled")
+        self.runBtn.config(state="disabled")
+        self.showGoalBtn.config(state="disabled")
+        for btn in self.btn:
+            btn.config(state="disabled")
+
     def reset(self):
         self.turtle.reset()
         self.commandText.configure(state='normal')
         self.commandText.delete("1.0", "end")
         self.commandText.configure(state='normal')
+        self.deleteBtn.config(state="normal")
+        self.runBtn.config(state="normal")
+        self.showGoalBtn.config(state="normal")
+        for btn in self.btn:
+            btn.config(state="normal")
