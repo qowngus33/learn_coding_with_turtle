@@ -68,6 +68,7 @@ python main.py
 * Add obstacle adding process in Stage class
 * Add GUI for making games and auto saving of goals
 * Add program logics such as for loop
+* Add debug button
 
 <br>
 
