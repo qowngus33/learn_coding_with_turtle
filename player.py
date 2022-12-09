@@ -10,12 +10,17 @@ class Player(turtle.RawTurtle):
         self.screen.bgpic("image/noname.png")
 
         self.screen.register_shape("image/puddle.gif")
-        self.screen.register_shape("image/foot-print.gif")
+        self.screen.register_shape("image/put.gif")
+        self.screen.register_shape("image/none.gif")
         super(Player, self).__init__(self.screen)
 
         self.river = turtle.RawTurtle(self.screen)
         self.river.penup()
         self.river.shape("image/puddle.gif")
+
+        self.put = turtle.RawTurtle(self.screen)
+        self.put.penup()
+        self.put.shape("image/none.gif")
 
         self.foot_print = []
 
@@ -34,6 +39,7 @@ class Player(turtle.RawTurtle):
 
     def reset(self):
         super(Player, self).reset()
+        self.put.shape("image/none.gif")
         self.shapesize(1.3, 1.3)
         self.speed(1)
 
@@ -45,3 +51,8 @@ class Player(turtle.RawTurtle):
 
     def Right(self):
         self.right(90)
+
+    def Put(self):
+        self.put.setpos(self.pos())
+        self.put.shape("image/put.gif")
+

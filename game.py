@@ -77,12 +77,11 @@ class GamePage:
                     success = False
         else:
             success = False
-
         if success:
-            time.sleep(0.5)
+            time.sleep(0.3)
             self.game_over()
         else:
-            time.sleep(1)
+            time.sleep(0.3)
             self.turtle.reset()
 
     def delete_click(self):
