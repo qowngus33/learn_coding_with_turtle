@@ -18,7 +18,7 @@ class LearnCodingWithTurtle:
         self.goal = goal
         self.root.title("LCWT")
         self.root.resizable(False, False)
-        center_window(self.root,600,400)
+        center_window(self.root,600,430)
 
         self.gameFrame = [tk.Frame(self.root) for _ in range(len(self.instructList))]
         self.game = [GamePage(self.gameFrame[i],self.instructList[i],goal[i]) for i in range(len(self.instructList))]
@@ -29,7 +29,7 @@ class LearnCodingWithTurtle:
         # add buttons for going to gameTableFrame
         for i in range(len(self.gameFrame)):
             self.gameFrame[i].grid(row=0,column=0,sticky="nsew")
-            self.game[i].homeBtn.configure(text="Home",command=lambda:[self.gameTableFrame.tkraise()])
+            self.game[i].homeBtn.configure(command=lambda:[self.gameTableFrame.tkraise()])
         self.homeBtn = tk.Button(self.tutorialFrame,text="Go Back",command=lambda:[self.gameTableFrame.tkraise()])
         self.homeBtn.place(x=500,y=10)
 
@@ -37,7 +37,7 @@ class LearnCodingWithTurtle:
                                     padx=10,pady=10,
                                     text="Game Start",font=("Arial", 20),
                                     command=lambda:[self.gameTableFrame.tkraise()])
-        self.btnToTable.place(x=190,y=300)
+        self.btnToTable.place(x=190,y=320)
 
         self.tablePageCount = 0
         self.nextTablePageBtn = tk.Button(self.gameTableFrame,text=">",command=lambda:self.next_page())
@@ -53,7 +53,7 @@ class LearnCodingWithTurtle:
                                             width=2,
                                             font=("Arial", 15),
                                             command=lambda c=i:self.start_game(self.gameFrame[c],self.game[c])))
-            self.btnToGame[i].place(x=95*(i%5)+90, y=130 * (((i%5) % 2 == 1) + 1))
+            self.btnToGame[i].place(x=95*(i%5)+90, y=130 *((i%5) % 2 == 1) + 140)
         for i in range(min(len(self.instructList),5)):
             self.btnToGame[i].tkraise()
 
@@ -71,15 +71,21 @@ class LearnCodingWithTurtle:
         game.show_goal()
 
     def next_page(self):
-        self.tablePageCount = min(self.tablePageCount+1,int(len(self.instructList)/5)-1)
+        for button in self.btnToGame:
+            button.config(state="disable")
+        self.tablePageCount = min(self.tablePageCount+1,int(len(self.instructList)/5))
         if self.tablePageCount*5 < len(self.instructList):
             for i in range(self.tablePageCount*5,min(len(self.instructList),self.tablePageCount*5+5)):
                 self.btnToGame[i].tkraise()
+                self.btnToGame[i].config(state="normal")
 
     def previous_page(self):
+        for button in self.btnToGame:
+            button.config(state="disable")
         self.tablePageCount = max(self.tablePageCount-1,0)
         for i in range(self.tablePageCount*5,min(len(self.instructList),self.tablePageCount*5+5)):
             self.btnToGame[i].tkraise()
+            self.btnToGame[i].config(state="normal")
 
 if __name__ == '__main__':
     instruct_list, goals = Stage("stage/").stages()
