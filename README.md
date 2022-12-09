@@ -5,7 +5,7 @@
 ![git](https://user-images.githubusercontent.com/83813866/204014817-952b68d1-ed88-414f-9445-a50fafd283b7.png)
 
 
- * **Coding game** made in the form of a **stage game** so that **children** who are new to coding can easily understand the principles of **algorithms**
+ * **Coding game** made in the form of **stage game** so that **children** who are new to **coding** can easily understand the principles of **algorithms**
  * You can easily edit or make stages of game
 
 <br>
@@ -13,13 +13,14 @@
 ## Why LCWT
 
 * It has **simple** and **intuitive** GUI so that very **young** students can also learn coding
-<img width="712" alt="스크린샷 2022-11-26 오후 3 30 39" src="https://user-images.githubusercontent.com/83813866/204075573-8d068b5a-a2b1-4da4-8c6b-722f512e6247.png">
 
+<img width="712" alt="스크린샷 2022-12-09 오후 11 19 39" src="https://user-images.githubusercontent.com/83813866/206722596-cccdf4f5-341d-4b5c-8f25-c340c3096274.png">
+<img width="712" alt="스크린샷 2022-12-09 오후 11 16 59" src="https://user-images.githubusercontent.com/83813866/206722141-a3310635-1ed4-431d-8878-2980fc1aa213.png">
 
 * You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
 ```python
 stage = Stage("stage/")
-stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
+stage.save_stage(1,["Forward()","Left()"],(50,0))
 ```
 
 * **LCWT** is very **light** and uses **standard** librarys of python such as `tkinter` `time` `turtle` so there is no need to install additional librarys except for `pillow`
@@ -51,7 +52,7 @@ tk.mainloop()
 path = "path for saving stage information pickle files you created"
 stage = Stage(path)
 
-instructList = ["turtle.forward(50)","turtle.forward(50)"]
+instructList = ["Forward()","Forward()"]
 goal = (100,0)
 
 stage.save_stage(stage_idx,instructionList,goal)
@@ -65,7 +66,6 @@ python main.py
 <br>
 
 ## TODO
-* Add obstacle adding process in Stage class
 * Add GUI for making games and auto saving of goals
 * Add program logics such as for loop
 * Add debug button
