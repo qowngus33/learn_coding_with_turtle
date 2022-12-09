@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.font import Font
 import time
 from player import Player
 
@@ -27,6 +28,8 @@ class GamePage:
 
         self.commandText = tk.Text(self.leftFrame,width=190,height=290,font=("Arial", 18))
         self.commandText.config(state="disabled")
+        self.bold_font = Font(family="Arial", size=18, weight="bold")
+        self.commandText.tag_configure("BOLD", font=self.bold_font)
         self.commandText.pack()
 
         self.btn = []
@@ -34,16 +37,16 @@ class GamePage:
         for idx, instruct in enumerate(btn_instruct):
             self.btn.append(tk.Button(self.bottomFrame,
                                       text=instruct,
-                                      width=15,
+                                      width=10,
                                       font=("Arial", 15),
                                       command=lambda c=idx:self.command_click("\n"+btn_instruct[c])))
-            self.btn[idx].place(x=180*(idx % 2), y=40*(idx//2))
+            self.btn[idx].place(x=150*(idx % 2), y=35*(idx//2))
 
         self.homeBtn = tk.Button(self.topFrame,text="Go back",font=("Arial", 15))
         self.runBtn = tk.Button(self.bottomFrame,width=5,text="Run",command=self.run_click,font=("Arial", 15),bg="white")
         self.deleteBtn = tk.Button(self.bottomFrame,width=5,text="Delete",command=self.delete_click,font=("Arial", 15))
         self.showGoalBtn = tk.Button(self.bottomFrame,width=5,text="Goal",command=self.show_goal,font=("Arial", 15))
-        self.resetBtn = tk.Button(self.bottomFrame, width=5, text="Reset", command=self.reset,font=("Arial", 15))
+        self.resetBtn = tk.Button(self.bottomFrame, width=5, text="Debug", command=self.debug,font=("Arial", 15))
 
         self.homeBtn.place(x=self.width+90, y=0)
         self.runBtn.place(x=self.width, y=0)
@@ -77,11 +80,10 @@ class GamePage:
                     success = False
         else:
             success = False
+        time.sleep(0.3)
         if success:
-            time.sleep(0.3)
             self.game_over()
         else:
-            time.sleep(0.3)
             self.turtle.reset()
 
     def delete_click(self):
@@ -129,3 +131,25 @@ class GamePage:
         self.resetBtn.config(state="normal")
         for btn in self.btn:
             btn.config(state="normal")
+
+    def debug(self):
+        self.turtle.reset()
+        result = self.commandText.get("1.0", "end-1c")
+        command_list = result.split("\n")
+        for idx, command in enumerate(command_list):
+            if len(command) > 0:
+                try:
+                    self.make_bold(idx+1)
+                    exec("self.turtle." + command)
+                    time.sleep(0.4)
+                    self.commandText.tag_remove("BOLD", str(idx+1) + ".0", str(idx+1) + ".0+1line")
+                except SyntaxError as err:
+                    print(err.lineno)
+        time.sleep(0.3)
+        self.turtle.reset()
+
+    def make_bold(self,idx):
+        try:
+            self.commandText.tag_add("BOLD", str(idx)+".0", str(idx)+".0+1line")
+        except tk.TclError:
+            pass
