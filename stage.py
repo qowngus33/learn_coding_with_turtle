@@ -33,7 +33,7 @@ class Stage:
 if __name__ == "__main__":
     stage = Stage("stage/")
     stage.save_stage(1,["Forward()"],(50,0))
-    stage.save_stage(2, ["Left()"], (50, 0))
+    stage.save_stage(2, ["Left()"], (0, 0))
     stage.save_stage(3,["Right()", "Forward()", "Forward()"], (0,-100))
     stage.save_stage(4, ["Forward()", "Put()","Forward()"], (100, 0))
     stage.save_stage(5,["Left()", "Left()", "Left()", "Forward()"], (0,-50))
@@ -42,6 +42,6 @@ if __name__ == "__main__":
     stage.save_stage(8,["Left()","Forward()","Put()",
                         "Left()","Forward()","Forward()",
                         "Right()","Forward()"],(-100,100))
-    stage.save_stage(9,["Forward()", "Left()", "Forward()",
+    stage.save_stage(9,["Forward()", "Left()", "Forward()","Put()",
                         "Right()","Forward()", "Left()", "Forward()"], (100, 100))
 
