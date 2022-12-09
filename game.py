@@ -12,17 +12,22 @@ class GamePage:
         self.master = master
         self.turtle = Player(master=self.master,width=self.width,height=self.height)
         self.turtle.setGoal(goal)
+        self.turtle.setFootprint([])
 
-        self.leftFrame = tk.Frame(self.master,width=200,height=300,padx=10,pady=10,bd=2)
-        self.leftFrame.grid(column=0,row=0)
+        self.topFrame = tk.Frame(self.master,width=600,height=30,bd=2,bg="white")
+        self.topFrame.grid(column=0, row=0,columnspan=10)
+        self.leftFrame = tk.LabelFrame(self.master,width=200,height=300,padx=10,pady=10,bd=2)
+        self.leftFrame.grid(column=0,row=1)
+        self.bottomFrame = tk.LabelFrame(self.master,width=600,height=90,padx=10,pady=10,bg="white")
+        self.bottomFrame.grid(column=0,row=2,columnspan=10)
+
         self.leftFrame.propagate(0)
+        self.topFrame.propagate(0)
+        self.bottomFrame.propagate(0)
+
         self.commandText = tk.Text(self.leftFrame,width=190,height=290,font=("Arial", 18))
         self.commandText.config(state="disabled")
         self.commandText.pack()
-
-        self.bottomFrame = tk.LabelFrame(self.master,width=600,height=100,padx=10,pady=10,bg="white")
-        self.bottomFrame.grid(column=0,row=1,columnspan=10)
-        self.bottomFrame.propagate(0)
 
         self.btn = []
         btn_instruct = list(set(instruct_list))
@@ -34,15 +39,17 @@ class GamePage:
                                       command=lambda c=idx:self.command_click("\n"+btn_instruct[c])))
             self.btn[idx].place(x=180*(idx % 2), y=40*(idx//2))
 
+        self.homeBtn = tk.Button(self.topFrame,text="Go back",font=("Arial", 15))
         self.runBtn = tk.Button(self.bottomFrame,width=5,text="Run",command=self.run_click,font=("Arial", 15),bg="white")
         self.deleteBtn = tk.Button(self.bottomFrame,width=5,text="Delete",command=self.delete_click,font=("Arial", 15))
-        self.homeBtn = tk.Button(self.bottomFrame,width=5,text="Home",font=("Arial", 15))
         self.showGoalBtn = tk.Button(self.bottomFrame,width=5,text="Goal",command=self.show_goal,font=("Arial", 15))
+        self.resetBtn = tk.Button(self.bottomFrame, width=5, text="Reset", command=self.reset,font=("Arial", 15))
 
+        self.homeBtn.place(x=self.width+90, y=0)
         self.runBtn.place(x=self.width, y=0)
-        self.deleteBtn.place(x=self.width, y=30)
-        self.homeBtn.place(x=self.width + 80, y=0)
-        self.showGoalBtn.place(x=self.width + 80, y=30)
+        self.deleteBtn.place(x=self.width+80, y=0)
+        self.showGoalBtn.place(x=self.width, y=30)
+        self.resetBtn.place(x=self.width+80, y=30)
 
     def command_click(self, instruct):
         self.commandText.configure(state='normal')
@@ -55,14 +62,23 @@ class GamePage:
         self.turtle.reset()
         result = self.commandText.get("1.0","end-1c")
         command_list = result.split("\n")
+        valid_command_list = []
         for command in command_list:
             if len(command) > 0:
                 try:
-                    exec("self." + command)
+                    exec("self.turtle." + command)
+                    valid_command_list.append(command)
                 except SyntaxError as err:
                     print(err.lineno)
-        print(int(self.turtle.pos()[0]),int(self.turtle.pos()[1]),self.goal)
-        if (int(self.turtle.pos()[0]),int(self.turtle.pos()[1])) == self.goal:
+        success = True
+        if len(valid_command_list) == len(self.instruct_list):
+            for i in range(len(valid_command_list)):
+                if valid_command_list[i] != self.instruct_list[i]:
+                    success = False
+        else:
+            success = False
+
+        if success:
             time.sleep(0.5)
             self.game_over()
         else:
@@ -81,7 +97,7 @@ class GamePage:
     def show_goal(self):
         self.turtle.reset()
         for instruct in self.instruct_list:
-            exec("self."+instruct)
+            exec("self.turtle."+instruct)
         time.sleep(1)
         self.turtle.reset()
 
@@ -99,6 +115,7 @@ class GamePage:
         self.deleteBtn.config(state="disabled")
         self.runBtn.config(state="disabled")
         self.showGoalBtn.config(state="disabled")
+        self.resetBtn.config(state="disabled")
         for btn in self.btn:
             btn.config(state="disabled")
 
@@ -106,9 +123,10 @@ class GamePage:
         self.turtle.reset()
         self.commandText.configure(state='normal')
         self.commandText.delete("1.0", "end")
-        self.commandText.configure(state='normal')
+        self.commandText.configure(state='disabled')
         self.deleteBtn.config(state="normal")
         self.runBtn.config(state="normal")
         self.showGoalBtn.config(state="normal")
+        self.resetBtn.config(state="normal")
         for btn in self.btn:
             btn.config(state="normal")

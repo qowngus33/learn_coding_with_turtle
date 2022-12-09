@@ -32,22 +32,15 @@ class Stage:
 
 if __name__ == "__main__":
     stage = Stage("stage/")
-    stage.save_stage(1,["turtle.forward(50)","turtle.forward(50)"],(100,0))
-    stage.save_stage(2,["turtle.right(90)", "turtle.forward(50)", "turtle.forward(50)"], (0,-100))
-    stage.save_stage(3,["turtle.left(90)", "turtle.left(90)", "turtle.left(90)", "turtle.forward(100)"], (0,-100))
-    stage.save_stage(4,["turtle.forward(50)","turtle.left(90)","turtle.forward(50)"], (50, 50))
-    stage.save_stage(5,["turtle.left(90)","turtle.forward(50)","turtle.left(90)","turtle.forward(50)"], (-50, 50))
-    stage.save_stage(6,["turtle.left(45)","turtle.forward(50)",
-                        "turtle.left(90)","turtle.forward(50)","turtle.forward(50)",
-                        "turtle.right(90)","turtle.forward(50)"],(0,141))
-    stage.save_stage(7,["turtle.forward(50)", "turtle.left(90)", "turtle.forward(50)",
-                        "turtle.right(90)","turtle.forward(50)", "turtle.left(90)", "turtle.forward(50)"], (100, 100))
-    stage.save_stage(8,["turtle.forward(50)","turtle.left(90)",
-                        "turtle.forward(50)","turtle.left(90)",
-                        "turtle.forward(100)","turtle.left(90)",
-                        "turtle.forward(100)","turtle.left(90)","turtle.forward(100)"], (49,-50))
-    stage.save_stage(9,["turtle.left(45)","turtle.forward(50)"],(35, 35))
-    stage.save_stage(10,["turtle.left(45)","turtle.forward(50)",
-                         "turtle.left(45)","turtle.forward(50)",
-                         "turtle.left(45)","turtle.forward(50)",
-                         "turtle.left(45)","turtle.forward(50)"], (-49, 120))
+    stage.save_stage(1,["Forward()"],(50,0))
+    stage.save_stage(2, ["Left()"], (50, 0))
+    stage.save_stage(3,["Right()", "Forward()", "Forward()"], (0,-100))
+    stage.save_stage(4,["Left()", "Left()", "Left()", "Forward()"], (0,-50))
+    stage.save_stage(5,["Forward()","Left()","Forward()"], (50, 50))
+    stage.save_stage(6,["Left()","Forward()","Left()","Forward()"], (-50, 50))
+    stage.save_stage(7,["Left()","Forward()",
+                        "Left()","Forward()","Forward()",
+                        "Right()","Forward()"],(-100,100))
+    stage.save_stage(8,["Forward()", "Left()", "Forward()",
+                        "Right()","Forward()", "Left()", "Forward()"], (100, 100))
+
