@@ -29,7 +29,10 @@ class LearnCodingWithTurtle:
         # add buttons for going to gameTableFrame
         for i in range(len(self.gameFrame)):
             self.gameFrame[i].grid(row=0,column=0,sticky="nsew")
+            self.game[i].stageNumText.insert(tk.END,"Stage "+str(i+1))
             self.game[i].homeBtn.configure(command=lambda:[self.gameTableFrame.tkraise()])
+            self.game[i].nextBtn.configure(
+                command=lambda c=min(i+1,len(self.game)-1),:self.start_game(self.gameFrame[c],self.game[c]))
         self.homeBtn = tk.Button(self.tutorialFrame,text="Go Back",command=lambda:[self.gameTableFrame.tkraise()])
         self.homeBtn.place(x=500,y=10)
 
@@ -66,8 +69,8 @@ class LearnCodingWithTurtle:
         self.startFrame.tkraise()
 
     def start_game(self, frame, game):
-        game.reset()
         frame.tkraise()
+        game.gameFrame.tkraise()
         game.show_goal()
 
     def next_page(self):

@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter.font import Font
 import time
+from imageFrame import ImageFrame
 from player import Player
 
 class GamePage:
@@ -11,16 +12,21 @@ class GamePage:
         self.goal = goal
         self.instruct_list = instruct_list
         self.master = master
-        self.turtle = Player(master=self.master,width=self.width,height=self.height)
+        self.gameFrame = tk.Frame(self.master, width=600, height=400, bd=2, bg="white")
+        self.turtle = Player(master=self.gameFrame,width=self.width,height=self.height)
         self.turtle.setGoal(goal)
         self.turtle.setFootprint([])
 
-        self.topFrame = tk.Frame(self.master,width=600,height=30,bd=2,bg="white")
+        self.topFrame = tk.Frame(self.gameFrame,width=600,height=30,bd=2,bg="white")
         self.topFrame.grid(column=0, row=0,columnspan=10)
-        self.leftFrame = tk.LabelFrame(self.master,width=200,height=300,padx=10,pady=10,bd=2)
+        self.leftFrame = tk.LabelFrame(self.gameFrame,width=200,height=300,padx=10,pady=10,bd=2)
         self.leftFrame.grid(column=0,row=1)
-        self.bottomFrame = tk.LabelFrame(self.master,width=600,height=90,padx=10,pady=10,bg="white")
+        self.bottomFrame = tk.LabelFrame(self.gameFrame,width=600,height=90,padx=10,pady=10,bg="white")
         self.bottomFrame.grid(column=0,row=2,columnspan=10)
+        self.successFrame = ImageFrame(self.master, "image/success.png")
+
+        self.gameFrame.grid(row=0, column=0, sticky="nsew")
+        self.successFrame.grid(row=0, column=0, sticky="nsew")
 
         self.leftFrame.propagate(0)
         self.topFrame.propagate(0)
@@ -31,6 +37,7 @@ class GamePage:
         self.bold_font = Font(family="Arial", size=18, weight="bold")
         self.commandText.tag_configure("BOLD", font=self.bold_font)
         self.commandText.pack()
+        self.stageNumText = tk.Text(self.topFrame,  font=("Arial", 18))
 
         self.btn = []
         btn_instruct = list(set(instruct_list))
@@ -43,16 +50,20 @@ class GamePage:
             self.btn[idx].place(x=150*(idx % 2), y=35*(idx//2))
 
         self.homeBtn = tk.Button(self.topFrame,text="Go back",font=("Arial", 15))
+        self.nextBtn = tk.Button(self.successFrame, text=">", font=("Arial", 15))
         self.runBtn = tk.Button(self.bottomFrame,width=5,text="Run",command=self.run_click,font=("Arial", 15),bg="white")
         self.deleteBtn = tk.Button(self.bottomFrame,width=5,text="Delete",command=self.delete_click,font=("Arial", 15))
         self.showGoalBtn = tk.Button(self.bottomFrame,width=5,text="Goal",command=self.show_goal,font=("Arial", 15))
         self.resetBtn = tk.Button(self.bottomFrame, width=5, text="Debug", command=self.debug,font=("Arial", 15))
 
+        self.stageNumText.place(x=10, y=0)
         self.homeBtn.place(x=self.width+90, y=0)
+        self.nextBtn.place(x=self.width+80, y=self.height/2+50)
         self.runBtn.place(x=self.width, y=0)
         self.deleteBtn.place(x=self.width+80, y=0)
         self.showGoalBtn.place(x=self.width, y=30)
         self.resetBtn.place(x=self.width+80, y=30)
+        self.gameFrame.tkraise()
 
     def command_click(self, instruct):
         self.commandText.configure(state='normal')
@@ -80,10 +91,11 @@ class GamePage:
                     success = False
         else:
             success = False
-        time.sleep(0.3)
         if success:
+            time.sleep(0.3)
             self.game_over()
         else:
+            time.sleep(0.3)
             self.turtle.reset()
 
     def delete_click(self):
@@ -99,26 +111,12 @@ class GamePage:
         self.turtle.reset()
         for instruct in self.instruct_list:
             exec("self.turtle."+instruct)
-        time.sleep(1)
+        time.sleep(0.5)
         self.turtle.reset()
 
     def game_over(self):
-        self.commandText.configure(state='normal')
-        self.commandText.delete("1.0", "end")
-        if self.command_num <= len(self.instruct_list):
-            self.commandText.insert(tk.END, f"SUCCESS!!\n\nYou Did It With Average Command Number Or Better!!")
-        else:
-            self.commandText.insert(tk.END, f"SUCCESS!!\n\nBut You Can Try Again With Shorter Length Of Commands.")
-        self.commandText.config(state="disabled")
-        self.command_num = 0
-
-        # disable buttons
-        self.deleteBtn.config(state="disabled")
-        self.runBtn.config(state="disabled")
-        self.showGoalBtn.config(state="disabled")
-        self.resetBtn.config(state="disabled")
-        for btn in self.btn:
-            btn.config(state="disabled")
+        self.reset()
+        self.successFrame.tkraise()
 
     def reset(self):
         self.turtle.reset()
