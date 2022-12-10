@@ -15,10 +15,12 @@
 * It has **simple** and **intuitive** GUI so that very **young** students can also learn coding
 
 <img width="712" alt="스크린샷 2022-12-09 오후 11 19 39" src="https://user-images.githubusercontent.com/83813866/206722596-cccdf4f5-341d-4b5c-8f25-c340c3096274.png">
-<img width="712" alt="스크린샷 2022-12-09 오후 11 16 59" src="https://user-images.githubusercontent.com/83813866/206722141-a3310635-1ed4-431d-8878-2980fc1aa213.png">
+
+<img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731246-27a5a343-64ed-4973-8992-66ca4ada43c7.png">
 
 * You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
-```python
+```python<img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731198-516c7a53-da01-4f18-b06e-e67ad71d80f1.png">
+
 stage = Stage("stage/")
 stage.save_stage(1,["Forward()","Left()"],(50,0))
 ```
@@ -68,7 +70,6 @@ python main.py
 ## TODO
 * Add GUI for making games and auto saving of goals
 * Add program logics such as for loop
-* Add debug button
 
 <br>
 
