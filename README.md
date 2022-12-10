@@ -18,6 +18,9 @@
 
 <img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731246-27a5a343-64ed-4973-8992-66ca4ada43c7.png">
 
+<img width="712" alt="스크린샷 2022-12-10 오전 10 58 36" src="https://user-images.githubusercontent.com/83813866/206823299-26ec455f-cf55-44ed-9bea-754ac1103df0.png">
+
+
 * You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
 ```python<img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731198-516c7a53-da01-4f18-b06e-e67ad71d80f1.png">
 
