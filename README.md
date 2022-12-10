@@ -21,9 +21,8 @@
 <img width="712" alt="스크린샷 2022-12-10 오전 10 58 36" src="https://user-images.githubusercontent.com/83813866/206823299-26ec455f-cf55-44ed-9bea-754ac1103df0.png">
 
 
-* You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
-```python<img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731198-516c7a53-da01-4f18-b06e-e67ad71d80f1.png">
-
+* You can easily make **stages** of coding game of your own with just **sequence** of commands.
+```python
 stage = Stage("stage/")
 stage.save_stage(1,["Forward()","Left()"],(50,0))
 ```
@@ -53,6 +52,9 @@ app = LearnCodingWithTurtle(tk.Tk(),instructList, goal)
 tk.mainloop()
 ```
 * You can make and save stages by following commands
+
+  * You can currently use `Forward`, `Left`, `Right`, `Put`and I will add more on next update
+
 ```python
 path = "path for saving stage information pickle files you created"
 stage = Stage(path)
