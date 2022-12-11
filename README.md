@@ -18,9 +18,11 @@
 
 <img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731246-27a5a343-64ed-4973-8992-66ca4ada43c7.png">
 
-* You can easily make **stages** of coding game of your own with just **sequence** of turtle commands.
-```python<img width="712" alt="스크린샷 2022-12-10 오전 12 02 02" src="https://user-images.githubusercontent.com/83813866/206731198-516c7a53-da01-4f18-b06e-e67ad71d80f1.png">
+<img width="712" alt="스크린샷 2022-12-10 오전 10 58 36" src="https://user-images.githubusercontent.com/83813866/206823299-26ec455f-cf55-44ed-9bea-754ac1103df0.png">
 
+
+* You can easily make **stages** of coding game of your own with just **sequence** of commands.
+```python
 stage = Stage("stage/")
 stage.save_stage(1,["Forward()","Left()"],(50,0))
 ```
@@ -50,8 +52,13 @@ app = LearnCodingWithTurtle(tk.Tk(),instructList, goal)
 tk.mainloop()
 ```
 * You can make and save stages by following commands
+
+  * You can currently use `Forward`, `Left`, `Right`, `Put`and I will add more on next update
+  * `Put` can be used only once.
+  * Only commands that are used are automatically added as buttons in stage.
+
 ```python
-path = "path for saving stage information pickle files you created"
+path = "path to save stage"
 stage = Stage(path)
 
 instructList = ["Forward()","Forward()"]
@@ -64,6 +71,19 @@ stage.save_stage(stage_idx,instructionList,goal)
 ```python
 python main.py
 ```
+
+<br>
+
+## Game rule
+
+* The goal of the game is to move the turtle along a given path into the puddle. It is shown at the start of the game and can be checked again through the `Goal` button
+* Users can add commands to the command list by clicking command buttons.
+* `Run` button will execute a list of commands line by line and if you successfully moved the turtle, you can move on to the next stage.
+* `Debug` button can be used to check commands one by one slowly.
+* `Delete` button will remove a last command of command list.
+
+<img width="400" alt="스크린샷 2022-12-10 오전 10 58 36" src="https://user-images.githubusercontent.com/83813866/206907002-cb46d4ec-1684-4cac-bc39-4e66e79a439e.gif">
+
 
 <br>
 
