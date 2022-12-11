@@ -44,7 +44,7 @@ class GamePage:
         for idx, instruct in enumerate(btn_instruct):
             self.btn.append(tk.Button(self.bottomFrame,
                                       text=instruct,
-                                      width=10,
+                                      width=12,
                                       font=("Arial", 15),
                                       command=lambda c=idx:self.command_click("\n"+btn_instruct[c])))
             self.btn[idx].place(x=150*(idx % 2), y=35*(idx//2))

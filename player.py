@@ -56,3 +56,13 @@ class Player(turtle.RawTurtle):
         self.put.setpos(self.pos())
         self.put.shape("image/put.gif")
 
+    def DrawRectangle(self):
+        self.forward(50)
+        self.left(90)
+        self.forward(50)
+        self.left(90)
+        self.forward(50)
+        self.left(90)
+        self.forward(50)
+        self.left(90)
+

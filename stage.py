@@ -32,16 +32,25 @@ class Stage:
 
 if __name__ == "__main__":
     stage = Stage("stage/")
-    stage.save_stage(1,["Forward()"],(50,0))
-    stage.save_stage(2, ["Left()"], (0, 0))
-    stage.save_stage(3,["Right()", "Forward()", "Forward()"], (0,-100))
-    stage.save_stage(4, ["Forward()", "Put()","Forward()"], (100, 0))
-    stage.save_stage(5,["Left()", "Left()", "Left()", "Forward()"], (0,-50))
-    stage.save_stage(6,["Forward()","Left()","Forward()"], (50, 50))
-    stage.save_stage(7,["Left()","Forward()","Left()","Forward()"], (-50, 50))
-    stage.save_stage(8,["Left()","Forward()","Put()",
-                        "Left()","Forward()","Forward()",
-                        "Right()","Forward()"],(-100,100))
-    stage.save_stage(9,["Forward()", "Left()", "Forward()","Put()",
-                        "Right()","Forward()", "Left()", "Forward()"], (100, 100))
+    stage.save_stage(1, ["Forward()"],                                  (50,0))
+    stage.save_stage(2, ["Left()"],                                     (0, 0))
+    stage.save_stage(3, ["Left()","Forward()"],                         (0, 50))
+    stage.save_stage(4, ["Forward()","Left()","Forward()"],             (50, 50))
+    stage.save_stage(5, ["Left()","Left()","Left()", "Forward()"],      (0, -50))
+    stage.save_stage(6, ["Left()","Forward()","Left()","Forward()"],    (-50, 50))
+    stage.save_stage(7, ["Right()", "Forward()", "Forward()"],          (0,-100))
+    stage.save_stage(8, ["Put()"],                                      (0, 0))
+    stage.save_stage(9, ["Forward()", "Put()","Forward()"],             (100, 0))
+    stage.save_stage(10, ["Left()","Forward()","Put()",
+                          "Left()","Forward()","Forward()",
+                          "Right()","Forward()"],                        (-100,100))
+    stage.save_stage(11,["Forward()", "Left()", "Forward()","Put()",
+                         "Right()","Forward()", "Left()", "Forward()"], (100, 100))
+    stage.save_stage(12, ["Forward()", "Left()", "Forward()", "Left()",
+                          "Forward()", "Left()", "Forward()", "Left()"], (0, 0))
+    stage.save_stage(13, ["DrawRectangle()"],                            (0, 0))
+    stage.save_stage(14, ["DrawRectangle()","Left()",
+                          "DrawRectangle()","Left()",
+                          "DrawRectangle()","Left()",
+                          "DrawRectangle()"],                             (0, 0))
 
