@@ -54,9 +54,11 @@ tk.mainloop()
 * You can make and save stages by following commands
 
   * You can currently use `Forward`, `Left`, `Right`, `Put`and I will add more on next update
+  * `Put` can be used only once.
+  * Only commands that are used are automatically added as buttons in stage.
 
 ```python
-path = "path for saving stage information pickle files you created"
+path = "path to save stage"
 stage = Stage(path)
 
 instructList = ["Forward()","Forward()"]
@@ -69,6 +71,17 @@ stage.save_stage(stage_idx,instructionList,goal)
 ```python
 python main.py
 ```
+
+<br>
+
+## Game rule
+
+* The goal of the game is to move the turtle along a given path into the puddle. It is shown at the start of the game and can be checked again through the `Goal` button
+* Users can add commands to the command list by clicking command buttons.
+* `Run` button will execute a list of commands line by line and if you successfully moved the turtle, you can move on to the next stage.
+* `Debug` button can be used to check commands one by one slowly.
+* `Delete` button will remove a last command of command list.
+
 
 <br>
 
