@@ -53,4 +53,9 @@ if __name__ == "__main__":
                           "DrawRectangle()","Left()",
                           "DrawRectangle()","Left()",
                           "DrawRectangle()"],                             (0, 0))
+    stage.save_stage(15, ["Forward()","DrawRectangle()",
+                          "Right()","Forward()",
+                          "DrawRectangle()","Right()",
+                          "Forward()","DrawRectangle()",
+                          "Right()","Forward()",], (0, 0))
 
