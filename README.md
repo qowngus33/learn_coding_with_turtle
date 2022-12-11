@@ -53,10 +53,6 @@ tk.mainloop()
 ```
 * You can make and save stages by following commands
 
-  * You can currently use `Forward`, `Left`, `Right`, `Put`and I will add more on next update
-  * `Put` can be used only once.
-  * Only commands that are used are automatically added as buttons in stage.
-
 ```python
 path = "path to save stage"
 stage = Stage(path)
@@ -66,6 +62,12 @@ goal = (100,0)
 
 stage.save_stage(stage_idx,instructionList,goal)
 ```
+
+  * You can currently use `Forward()`, `Left()`, `Right()`, `Put()`,`DrawRectangle()` and I will add more on next update.
+  * You can define your own function in Player class which is defined in `player.py`
+  * `Put` can be used only once.
+  * Only commands that are used are automatically added as buttons in stage.
+
 
 * ... Or you can simply use games already made by running `main.py`
 ```python
