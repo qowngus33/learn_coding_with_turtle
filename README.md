@@ -82,6 +82,8 @@ python main.py
 * `Debug` button can be used to check commands one by one slowly.
 * `Delete` button will remove a last command of command list.
 
+<img width="400" alt="스크린샷 2022-12-10 오전 10 58 36" src="https://user-images.githubusercontent.com/83813866/206907002-cb46d4ec-1684-4cac-bc39-4e66e79a439e.gif">
+
 
 <br>
 
